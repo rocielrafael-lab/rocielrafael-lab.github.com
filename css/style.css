@@ -1,0 +1,585 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    position: relative;
+    padding: 20px;
+}
+
+/* Fondo con efectos */
+.background-effects {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Contenedor principal - COMPLETAMENTE RESPONSIVE */
+.container {
+    text-align: center;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 50px rgba(255, 107, 107, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    width: 100%;
+    max-width: 700px;
+    z-index: 10;
+    position: relative;
+    backdrop-filter: blur(15px);
+    border: 3px solid rgba(255, 255, 255, 0.4);
+    margin: 120px auto 40px; /* Espacio para el gatito */
+}
+
+/* Header */
+.header h1 {
+    color: #ff6b6b;
+    margin-bottom: 25px;
+    font-size: 2.5rem;
+    text-shadow: 
+        2px 2px 0px rgba(255, 107, 107, 0.3),
+        4px 4px 0px rgba(255, 107, 107, 0.1);
+    background: linear-gradient(45deg, #ff6b6b, #ff8e8e, #ff6b6b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    animation: gradientShift 3s ease-in-out infinite;
+}
+
+/* Sección de carta */
+.letter-section {
+    margin-bottom: 25px;
+}
+
+.love-letter {
+    background: linear-gradient(135deg, #fff5f5, #ffecec);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 
+        0 8px 25px rgba(255, 107, 107, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    border: 2px solid rgba(255, 107, 107, 0.2);
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.love-letter::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #ff6b6b, #ffa726, #ff6b6b);
+    background-size: 200% 100%;
+    animation: gradientShift 3s ease-in-out infinite;
+}
+
+.letter-content p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    position: relative;
+    padding-left: 20px;
+}
+
+.letter-content p::before {
+    content: '❤️';
+    position: absolute;
+    left: -5px;
+    top: 0;
+    font-size: 0.8rem;
+}
+
+.signature {
+    margin-top: 20px;
+    text-align: right;
+    font-style: italic;
+    color: #ff6b6b;
+    border-top: 1px dashed rgba(255, 107, 107, 0.3);
+    padding-top: 15px;
+}
+
+.signature .name {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 5px;
+}
+
+/* Sección de botones - POSICIÓN MEJORADA */
+.buttons-section {
+    margin-top: 30px;
+    position: relative;
+    z-index: 1000; /* Alto z-index para que esté siempre visible */
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.btn {
+    padding: 16px 35px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 
+        0 6px 20px rgba(0, 0, 0, 0.2),
+        0 3px 0 rgba(0, 0, 0, 0.1);
+    border: none;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+    z-index: 1001; /* Muy alto para estar siempre encima */
+    min-width: 180px;
+    flex-shrink: 0;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn-yes {
+    background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    animation: buttonPulse 2s ease-in-out infinite;
+}
+
+.btn-yes:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 
+        0 12px 30px rgba(255, 107, 107, 0.4),
+        0 5px 0 rgba(220, 80, 80, 0.8);
+}
+
+.btn-no {
+    background: linear-gradient(135deg, #6b6bff, #8e8eff);
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.btn-no:hover {
+    transform: scale(1.05);
+}
+
+/* Sección de mensaje */
+.message-section {
+    margin-top: 25px;
+}
+
+.message {
+    display: none;
+    padding: 25px;
+    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+    border-radius: 15px;
+    color: #2e7d32;
+    font-weight: bold;
+    box-shadow: 
+        0 10px 25px rgba(46, 125, 50, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    border: 2px solid rgba(76, 175, 80, 0.3);
+    position: relative;
+    overflow: hidden;
+    animation: slideInUp 0.8s ease-out;
+}
+
+.message::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #4caf50, #8bc34a, #4caf50);
+    background-size: 200% 100%;
+    animation: gradientShift 3s ease-in-out infinite;
+}
+
+.message h2 {
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+    color: #2e7d32;
+}
+
+.message p {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+}
+
+.promise {
+    font-size: 1.3rem !important;
+    color: #1b5e20;
+    margin-top: 15px !important;
+}
+
+.happy-cat {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.celebration-hearts {
+    font-size: 1.8rem;
+    margin-top: 15px;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* GATITO - POSICIÓN FIJA MEJORADA */
+.cat-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 900;
+    pointer-events: auto;
+}
+
+.sad-cat {
+    position: relative;
+    animation: floatCat 4s ease-in-out infinite;
+    transform-origin: center;
+}
+
+.cat-body {
+    width: 100px;
+    height: 85px;
+    background: linear-gradient(135deg, #ffb74d, #ff9800);
+    border-radius: 50% 50% 40% 40%;
+    position: relative;
+    box-shadow: 
+        0 4px 12px rgba(0,0,0,0.2),
+        inset 0 -4px 8px rgba(0,0,0,0.1);
+}
+
+.cat-head {
+    position: relative;
+    width: 85px;
+    height: 70px;
+    background: inherit;
+    border-radius: 45% 45% 40% 40%;
+    margin: 0 auto;
+    top: -8px;
+}
+
+.cat-ears {
+    position: absolute;
+    top: -12px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 12px;
+}
+
+.ear {
+    width: 20px;
+    height: 25px;
+    background: inherit;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    transform-origin: bottom;
+    animation: earTwitch 3s ease-in-out infinite;
+}
+
+.left-ear {
+    transform: rotate(-20deg);
+}
+
+.right-ear {
+    transform: rotate(20deg);
+}
+
+.cat-face {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+}
+
+.eyes {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 15px;
+    margin-bottom: 8px;
+}
+
+.eye {
+    width: 16px;
+    height: 20px;
+    background: #333;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    animation: blink 4s infinite;
+}
+
+.eye::before {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    top: 3px;
+    left: 3px;
+}
+
+.tear {
+    position: absolute;
+    width: 2px;
+    height: 6px;
+    background: #4fc3f7;
+    border-radius: 50%;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: cry 2s ease-in-out infinite;
+    opacity: 0;
+}
+
+.nose {
+    width: 10px;
+    height: 6px;
+    background: #ff6b6b;
+    border-radius: 40%;
+    margin: 0 auto 4px;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.mouth {
+    width: 16px;
+    height: 6px;
+    border-bottom: 2px solid #333;
+    border-radius: 0 0 50% 50%;
+    margin: 0 auto;
+}
+
+.cat-paws {
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 20px;
+}
+
+.paw {
+    width: 20px;
+    height: 16px;
+    background: inherit;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    animation: pawMove 3s ease-in-out infinite;
+}
+
+.cat-message {
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    animation: messageFloat 3s ease-in-out infinite;
+    z-index: 950;
+}
+
+.cat-message::before {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid rgba(255, 255, 255, 0.95);
+}
+
+/* RESPONSIVE COMPLETO */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+        justify-content: flex-start;
+    }
+
+    .container {
+        margin: 100px auto 30px;
+        padding: 25px;
+        max-width: 95%;
+    }
+
+    .header h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .love-letter {
+        padding: 20px;
+    }
+
+    .letter-content p {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 250px;
+        padding: 14px 25px;
+        font-size: 1.1rem;
+    }
+
+    /* Gatito más pequeño en móviles */
+    .cat-container {
+        top: 15px;
+        transform: translateX(-50%) scale(0.9);
+    }
+
+    .cat-body {
+        width: 90px;
+        height: 75px;
+    }
+
+    .cat-head {
+        width: 75px;
+        height: 60px;
+    }
+
+    .cat-message {
+        font-size: 0.7rem;
+        top: -30px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        margin: 90px auto 20px;
+        padding: 20px;
+    }
+
+    .header h1 {
+        font-size: 1.6rem;
+    }
+
+    .love-letter {
+        padding: 15px;
+    }
+
+    .letter-content p {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        padding: 12px 20px;
+        font-size: 1rem;
+        max-width: 220px;
+    }
+
+    .message {
+        padding: 20px;
+    }
+
+    .message h2 {
+        font-size: 1.5rem;
+    }
+
+    .message p {
+        font-size: 1rem;
+    }
+
+    /* Gatito aún más pequeño en móviles muy pequeños */
+    .cat-container {
+        top: 10px;
+        transform: translateX(-50%) scale(0.8);
+    }
+
+    .cat-body {
+        width: 80px;
+        height: 65px;
+    }
+
+    .cat-head {
+        width: 65px;
+        height: 50px;
+    }
+
+    .cat-message {
+        font-size: 0.6rem;
+        top: -25px;
+        padding: 4px 8px;
+    }
+}
+
+/* Para pantallas muy grandes */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 800px;
+    }
+    
+    .cat-container {
+        top: 30px;
+    }
+}
+
+/* Asegurar que los botones sean siempre visibles */
+.buttons-section {
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Prevenir que otros elementos tapen los botones */
+.container > * {
+    position: relative;
+    z-index: 10;
+}

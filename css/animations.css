@@ -1,0 +1,264 @@
+/* Animaciones del gatito */
+@keyframes floatCat {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-15px) rotate(2deg); }
+}
+
+@keyframes earTwitch {
+    0%, 90%, 100% { transform: rotate(-20deg); }
+    95% { transform: rotate(-10deg); }
+}
+
+@keyframes blink {
+    0%, 45%, 55%, 100% { height: 25px; }
+    48%, 52% { height: 5px; }
+}
+
+@keyframes cry {
+    0%, 40% { 
+        height: 0; 
+        opacity: 0; 
+        top: 25px;
+    }
+    50%, 70% { 
+        height: 15px; 
+        opacity: 1; 
+        top: 40px;
+    }
+    80%, 100% { 
+        height: 0; 
+        opacity: 0; 
+        top: 55px;
+    }
+}
+
+@keyframes pawMove {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes messageFloat {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-5px); }
+}
+
+/* Animaciones generales */
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: translateY(-50%) scale(0.8); }
+    50% { opacity: 1; transform: translateY(-50%) scale(1.2); }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-20px); }
+    60% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Animaciones de efectos especiales */
+@keyframes float {
+    0% { 
+        transform: translateY(100vh) rotate(0deg) scale(0); 
+        opacity: 0; 
+    }
+    10% { 
+        opacity: 1; 
+    }
+    90% { 
+        opacity: 1; 
+    }
+    100% { 
+        transform: translateY(-100px) rotate(360deg) scale(1); 
+        opacity: 0; 
+    }
+}
+
+@keyframes sparkle {
+    0%, 100% { 
+        transform: scale(0) rotate(0deg); 
+        opacity: 0; 
+    }
+    50% { 
+        transform: scale(1) rotate(180deg); 
+        opacity: 1; 
+    }
+}
+
+@keyframes textFloat {
+    0% { 
+        transform: translateY(100px) scale(0.8); 
+        opacity: 0; 
+    }
+    20% { 
+        opacity: 1; 
+    }
+    80% { 
+        opacity: 1; 
+    }
+    100% { 
+        transform: translateY(-50px) scale(1); 
+        opacity: 0; 
+    }
+}
+
+/* Clases de animación */
+.pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.heart-beat {
+    animation: heartBeat 1.5s ease-in-out infinite;
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+.bounce-in {
+    animation: bounce 1s ease-out;
+}
+
+/* Efectos de lluvia de corazones */
+.heart-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.heart-rain::before {
+    content: '❤️💖💕💗💓💔💘💝';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    font-size: 20px;
+    letter-spacing: 20px;
+    animation: heartRain 15s linear infinite;
+}
+
+@keyframes heartRain {
+    0% { 
+        transform: translateY(-100px) rotate(0deg); 
+    }
+    100% { 
+        transform: translateY(100vh) rotate(360deg); 
+    }
+}
+
+/* Efectos de brillo */
+.sparkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 2px white;
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+/* Animaciones para los botones */
+@keyframes buttonPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animaciones del gatito */
+@keyframes floatCat {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+@keyframes earTwitch {
+    0%, 90%, 100% { transform: rotate(-20deg); }
+    95% { transform: rotate(-10deg); }
+}
+
+@keyframes blink {
+    0%, 45%, 55%, 100% { height: 20px; }
+    48%, 52% { height: 4px; }
+}
+
+@keyframes cry {
+    0%, 40% { 
+        height: 0; 
+        opacity: 0; 
+        top: 20px;
+    }
+    50%, 70% { 
+        height: 12px; 
+        opacity: 1; 
+        top: 32px;
+    }
+    80%, 100% { 
+        height: 0; 
+        opacity: 0; 
+        top: 44px;
+    }
+}
+
+@keyframes pawMove {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
+@keyframes messageFloat {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-3px); }
+}
+
+/* Animaciones generales */
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-15px); }
+    60% { transform: translateY(-7px); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
